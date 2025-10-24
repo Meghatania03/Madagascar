@@ -89,7 +89,7 @@ th {
 <body>
 <div class="container">
 <h1>🐘 Staff Dashboard - <?= htmlspecialchars($staff_name) ?></h1>
-<form method="POST" action="logout.php"><button class="logout">Logout</button></form>
+<form method="POST" action="../auth/logout.php"><button class="logout">Logout</button></form>
 
 <h2>Your Assigned Animals</h2>
 <?php if(mysqli_num_rows($animals) > 0): ?>

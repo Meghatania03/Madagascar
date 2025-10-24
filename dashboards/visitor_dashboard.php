@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost:3307", "root", "", "madagascar_zoo");
+$conn = mysqli_connect("localhost:3307", "root", "", "Madagascar_db");
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'visitor') {
@@ -23,7 +23,7 @@ $animals = mysqli_query($conn, "SELECT name, species, health_status FROM Animal"
 <style>
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #badc58, #6ab04c);
+    background: linear-gradient(135deg, #d8e0c0ff, #9a9c9aff);
     margin: 0;
     padding: 20px;
 }
@@ -62,10 +62,23 @@ th {
 <form method="POST" action="logout.php"><button class="logout">Logout</button></form>
 
 <h2>Your Tickets</h2>
+<!-- Book New Ticket Button -->
+<form action="book_ticket.php" method="get" style="margin-bottom: 10px;">
+    <button type="submit" style="
+        background: #2d98da;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+    ">Book New Ticket</button>
+</form>
+
 <table>
 <tr><th>Ticket ID</th><th>Price</th><th>Issue Date</th></tr>
 <?php while($t = mysqli_fetch_assoc($tickets)) echo "<tr><td>{$t['ticket_id']}</td><td>{$t['price']}</td><td>{$t['issue_date']}</td></tr>"; ?>
 </table>
+
 
 <h2>Animals You Can See</h2>
 <table>
